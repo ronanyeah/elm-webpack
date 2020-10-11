@@ -20,14 +20,12 @@ module.exports = {
   mode: isProd ? "production" : "development",
   entry: "./src/index.js",
   devServer: {
+    publicPath: "/",
     contentBase: publicFolder,
     port: 8000,
-    historyApiFallback: true,
     hotOnly: true,
   },
   output: {
-    // publicPath only necessary due to HMR bug:
-    // https://github.com/webpack/webpack-dev-server/issues/1385#issuecomment-482166140
     publicPath: "/",
     path: publicFolder,
     filename: "bundle.js",
