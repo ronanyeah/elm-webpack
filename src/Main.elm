@@ -1,44 +1,26 @@
 module Main exposing (main)
 
 import Browser
-import Element exposing (centerX, centerY, el, fill, height, none, text, width)
-import Html exposing (Html)
+import Types exposing (Flags, Model, Msg)
+import Update exposing (update)
+import View exposing (view)
 
 
-type alias Model =
-    {}
-
-
-type Msg
-    = Msg
-
-
-main : Program () Model Msg
+main : Program Flags Model Msg
 main =
     Browser.element
-        { init =
-            always
-                ( {}
-                , Cmd.none
-                )
+        { init = init
         , view = view
         , update = update
-        , subscriptions = always Sub.none
+        , subscriptions = subscriptions
         }
 
 
-view : Model -> Html Msg
-view _ =
-    text "App!"
-        |> el [ centerX, centerY ]
-        |> Element.layout
-            [ width fill
-            , height fill
-            ]
+init : Flags -> ( Model, Cmd Msg )
+init _ =
+    ( {}, Cmd.none )
 
 
-update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-    case msg of
-        Msg ->
-            ( model, Cmd.none )
+subscriptions : Model -> Sub Msg
+subscriptions _ =
+    Sub.none
