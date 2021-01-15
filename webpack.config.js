@@ -16,8 +16,14 @@ const webpackLoader = {
   },
 };
 
+const webpackPlugins = isProd
+  ? [webpackLoader]
+  : [{ loader: "elm-hot-webpack-loader" }, webpackLoader];
+
+const mode = isProd ? "production" : "development";
+
 module.exports = {
-  mode: isProd ? "production" : "development",
+  mode,
   entry: "./src/index.js",
   devServer: {
     publicPath: "/",
@@ -35,9 +41,7 @@ module.exports = {
       {
         test: /\.elm$/,
         exclude: [/elm-stuff/, /node_modules/],
-        use: isProd
-          ? [webpackLoader]
-          : [{ loader: "elm-hot-webpack-loader" }, webpackLoader],
+        use: webpackPlugins,
       },
     ],
   },
