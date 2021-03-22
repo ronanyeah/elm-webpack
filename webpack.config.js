@@ -16,7 +16,7 @@ const webpackLoader = {
   },
 };
 
-const webpackPlugins = isProd
+const webpackLoaders = isProd
   ? [webpackLoader]
   : [{ loader: "elm-hot-webpack-loader" }, webpackLoader];
 
@@ -41,7 +41,7 @@ module.exports = {
       {
         test: /\.elm$/,
         exclude: [/elm-stuff/, /node_modules/],
-        use: webpackPlugins,
+        use: webpackLoaders,
       },
     ],
   },
