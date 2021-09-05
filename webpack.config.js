@@ -1,49 +1,49 @@
 const { resolve } = require("path");
 const webpack = require("webpack");
 
-const { ENV } = process.env;
-
 const publicFolder = resolve("./public");
 
-const isProd = ENV === "production";
+module.exports = (env) => {
+  const devMode = Boolean(env.WEBPACK_SERVE);
 
-const webpackLoader = {
-  loader: "elm-webpack-loader",
-  options: {
-    debug: false,
-    optimize: isProd,
-    cwd: __dirname,
-  },
-};
+  const loaderConfig = {
+    loader: "elm-webpack-loader",
+    options: {
+      debug: false,
+      optimize: !devMode,
+      cwd: __dirname,
+    },
+  };
 
-const webpackLoaders = isProd
-  ? [webpackLoader]
-  : [{ loader: "elm-hot-webpack-loader" }, webpackLoader];
+  const elmLoader = devMode
+    ? [{ loader: "elm-hot-webpack-loader" }, loaderConfig]
+    : [loaderConfig];
 
-const mode = isProd ? "production" : "development";
-
-module.exports = {
-  mode,
-  entry: "./src/index.js",
-  devServer: {
-    publicPath: "/",
-    contentBase: publicFolder,
-    port: 8000,
-    hotOnly: true,
-  },
-  output: {
-    publicPath: "/",
-    path: publicFolder,
-    filename: "bundle.js",
-  },
-  module: {
-    rules: [
-      {
-        test: /\.elm$/,
-        exclude: [/elm-stuff/, /node_modules/],
-        use: webpackLoaders,
-      },
-    ],
-  },
-  plugins: [new webpack.NoEmitOnErrorsPlugin()],
+  return {
+    mode: devMode ? "development" : "production",
+    entry: "./src/index.js",
+    output: {
+      publicPath: "/",
+      path: publicFolder,
+      filename: "bundle.js",
+    },
+    stats: devMode ? "errors-warnings" : "normal",
+    infrastructureLogging: {
+      level: "warn",
+    },
+    devServer: {
+      port: 8000,
+      hot: "only",
+    },
+    module: {
+      rules: [
+        {
+          test: /\.elm$/,
+          exclude: [/elm-stuff/, /node_modules/],
+          use: elmLoader,
+        },
+      ],
+    },
+    plugins: [new webpack.NoEmitOnErrorsPlugin()],
+  };
 };
