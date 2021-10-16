@@ -9,7 +9,15 @@ view : Model -> Html Msg
 view _ =
     text "App!"
         |> el [ centerX, centerY ]
-        |> Element.layout
+        |> Element.layoutWith
+            { options =
+                [ Element.focusStyle
+                    { borderColor = Nothing
+                    , backgroundColor = Nothing
+                    , shadow = Nothing
+                    }
+                ]
+            }
             [ width fill
             , height fill
             ]
