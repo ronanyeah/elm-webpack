@@ -4,8 +4,7 @@
 - [npm CLI](https://docs.npmjs.com/)
 
 ## How to install
-- `npm install --force`
-> Flag required due to [dependency conflict](https://github.com/klazuka/elm-hot-webpack-loader/issues/21).
+- `npm install`
 
 ## How to build
 - `npm run build`
