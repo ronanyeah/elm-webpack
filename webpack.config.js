@@ -21,7 +21,7 @@ module.exports = (env) => {
 
   return {
     mode: devMode ? "development" : "production",
-    entry: "./src/index.js",
+    entry: "./src/index.ts",
     output: {
       publicPath: "/",
       path: publicFolder,
@@ -41,6 +41,11 @@ module.exports = (env) => {
           test: /\.elm$/,
           exclude: [/elm-stuff/, /node_modules/],
           use: elmLoader,
+        },
+        {
+          test: /\.ts$/,
+          use: "ts-loader",
+          exclude: /node_modules/,
         },
       ],
     },
