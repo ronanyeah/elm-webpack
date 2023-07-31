@@ -49,6 +49,9 @@ module.exports = (env) => {
         },
       ],
     },
+    resolve: {
+      extensions: [".ts", ".js"],
+    },
     plugins: [new webpack.NoEmitOnErrorsPlugin()],
   };
 };
