@@ -1,17 +1,24 @@
 {
   "name": "App",
+  "short_name": "App",
   "start_url": "/",
-  "display": "minimal-ui",
+  "display": "standalone",
   "icons": [
     {
-      "src": "/favicon.svg",
-      "type": "image/svg+xml",
-      "sizes": "180x180"
+      "src": "/favicon.png",
+      "type": "image/png",
+      "sizes": "64x64"
     },
     {
       "src": "/apple-touch-icon.png",
       "type": "image/png",
       "sizes": "180x180"
+    },
+    {
+      "src": "/large.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
     }
   ]
 }
