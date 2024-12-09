@@ -1,0 +1,7 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+#container {
+  height: 100dvh;
+}
