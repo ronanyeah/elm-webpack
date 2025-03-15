@@ -1,12 +1,13 @@
 module Main exposing (main)
 
 import Browser
-import Types exposing (Flags, Model, Msg)
+import Ports
+import Types exposing (Model, Msg)
 import Update exposing (update)
 import View exposing (view)
 
 
-main : Program Flags Model Msg
+main : Program Ports.Flags Model Msg
 main =
     Browser.element
         { init = init
@@ -16,9 +17,9 @@ main =
         }
 
 
-init : Flags -> ( Model, Cmd Msg )
+init : Ports.Flags -> ( Model, Cmd Msg )
 init _ =
-    ( {}, Cmd.none )
+    ( {}, Ports.log "app start" )
 
 
 subscriptions : Model -> Sub Msg

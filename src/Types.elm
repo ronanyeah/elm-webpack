@@ -1,11 +1,7 @@
-module Types exposing (Flags, Model, Msg(..))
+module Types exposing (Model, Msg(..))
 
 
 type alias Model =
-    {}
-
-
-type alias Flags =
     {}
 
 

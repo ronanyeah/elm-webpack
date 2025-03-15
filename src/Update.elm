@@ -8,4 +8,4 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Msg ->
-            ( model, Ports.log "!" )
+            ( model, Cmd.none )

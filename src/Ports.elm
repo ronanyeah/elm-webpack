@@ -1,4 +1,8 @@
-port module Ports exposing (log)
+port module Ports exposing (..)
+
+
+type alias Flags =
+    {}
 
 
 port log : String -> Cmd msg

@@ -1,7 +1,10 @@
+/*
 ::-webkit-scrollbar {
   display: none;
 }
+*/
 
+/* for handling keyboard presence on mobile */
 #container {
   height: 100dvh;
 }
