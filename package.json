@@ -9,12 +9,13 @@
     "elm-webpack-loader": "^8.0.0",
     "style-loader": "^4.0.0",
     "ts-loader": "^9.4.2",
+    "ts-node": "^10.9.2",
     "typescript": "^5.0.2",
     "webpack": "^5.39.1",
     "webpack-cli": "^6.0.1"
   },
   "devDependencies": {
-    "elm-reloader": "^1.0.0",
+    "elm-reloader": "^1.1.2",
     "webpack-dev-server": "^5.0.4"
   }
 }
