@@ -1,6 +1,5 @@
 module Update exposing (update)
 
-import Ports
 import Types exposing (Model, Msg(..))
 
 

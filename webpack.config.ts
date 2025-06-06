@@ -1,4 +1,3 @@
-import "webpack-dev-server"; // adds Configuration.devServer type
 import webpack from "webpack";
 import { WebpackRunOptions } from "webpack-cli";
 import { resolve } from "path";
